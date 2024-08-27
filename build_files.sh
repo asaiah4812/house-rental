@@ -1,5 +1,5 @@
 # build_files.sh
 
-pip install -r requirements.txt
-python3.11 manage.py collectstatic --noinput
+/opt/vercel/python3/bin/python3 -m pip install -r requirements.txt
+/opt/vercel/python3/bin/python3 manage.py collectstatic --noinput
 
