@@ -1,0 +1,7 @@
+env/
+media/
+node/
+__pycahe__/
+.env
+db.sqlite3
+staticfiles/

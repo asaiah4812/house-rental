@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .tw-media{
+    @apply w-[90%] md:w-[80%] mx-auto;
+  }
+  .errorlist + input{
+    @apply border border-solid border-red-500;
+  }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "DM Sans", sans-serif;
+}
+
+
+
+.bg-cover{
+    background-image: linear-gradient(rgba(97, 97, 97, 0.3), rgba(27, 27, 25, 0.4) ), url('/static/images/2149836942.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media(max-width:800px){
+    .bg-cover{
+        height: fit-content;
+    }
+}
+
+.bg-detail{
+    display: flex;
+    padding: 1rem;
+    /* height: 100vh; */
+    flex-direction: column;
+}
+
+[x-cloak] { display: none !important; }
+
+/* .active:focus-visible{
+    transform: translateY(-10px) !important;
+} */
+
+::-webkit-scrollbar {
+  width: 1em;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(156, 16%, 53%);
+  border-radius: 100vw;
+  margin-block: .5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(135, 38%, 23%);
+  transition: 0.3s all ease;
+  border: .25em solid hsl(169, 78%, 12%) ;
+  border-radius: 100vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsla(131, 54%, 19%, 0.575);
+}

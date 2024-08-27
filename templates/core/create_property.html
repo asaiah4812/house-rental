@@ -1,0 +1,105 @@
+{% extends 'layout/main-layout.html' %}
+
+{% block title %}Create Property{% endblock %}
+
+{% block layout %}
+<section x-data="{ load: false }" class="container mx-auto px-4 py-8">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">Create Property</h2>
+
+    <form @submit="load = true" method="POST" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                <h3 class="font-bold mb-2">Please correct the following errors:</h3>
+                <ul class="list-disc list-inside">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        {% for field in form.visible_fields %}
+            {% if field.name != 'check_in_time' and field.name != 'check_out_time' and field.name != 'category' %}
+                <div>
+                    <label for="{{ field.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900">
+                        {{ field.label }}
+                    </label>
+                    {% if field.field.widget.input_type == 'checkbox' %}
+                        <div class="flex items-center">
+                            {{ field }}
+                            <label for="{{ field.id_for_label }}" class="ml-2 text-sm font-medium text-gray-900">
+                                {{ field.label }}
+                            </label>
+                        </div>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                    {% if field.help_text %}
+                        <p class="mt-1 text-sm text-gray-500">{{ field.help_text|safe }}</p>
+                    {% endif %}
+                    {% if field.errors %}
+                        <p class="mt-2 text-sm text-red-600">{{ field.errors.0 }}</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+            <div>
+    <label for="{{ form.category.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900">
+        {{ form.category.label }}
+    </label>
+    <div class="space-y-2">
+        {% for choice in form.category %}
+            <div class="flex items-center">
+                {{ choice.tag }}
+                <label for="{{ choice.id_for_label }}" class="ml-2 text-sm font-medium text-gray-900">
+                    {{ choice.choice_label }}
+                </label>
+            </div>
+        {% endfor %}
+    </div>
+    {% if form.category.errors %}
+        <p class="mt-2 text-sm text-red-600">{{ form.category.errors.0 }}</p>
+    {% endif %}
+</div>
+        <div>
+            <label for="{{ form.check_in_time.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900">
+                Check-in Time
+            </label>
+            <div class="relative">
+                {{ form.check_in_time }}
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <label for="{{ form.check_out_time.id_for_label }}" class="block mb-2 text-sm font-medium text-gray-900">
+                Check-out Time
+            </label>
+            <div class="relative">
+                {{ form.check_out_time }}
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <button type="submit" x-show="!load" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Create Property
+            </button>
+            <button type="submit" x-show="load" x-cloak class="text-white bg-blue-400 cursor-not-allowed font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Loading...
+            </button>
+        </div>
+    </form>
+</section>
+{% endblock %}

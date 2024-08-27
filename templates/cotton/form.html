@@ -1,0 +1,175 @@
+ <form action="{% url 'core:home' %}" class="bg-white rounded-lg md:rounded-3xl p-2 lg:p-4 mt-5">
+        <div
+          class=" hidden md:flex items-center justify-between lg:gap-2 flex-wrap lg:flex-nowrap bg-slate-300 p-3 rounded-2xl md:rounded-full"
+        >
+          <button class="bg-white text-sm lg:text-md hover:bg-slate-100 px-4 py-3 rounded-full">
+            All Accomodation
+          </button>
+          <button class="px-4 py-3 text-sm lg:text-md rounded-full hover:bg-slate-200">
+            Villa
+          </button>
+          <button class="px-4 py-3 text-sm lg:text-md rounded-full hover:bg-slate-200">
+            Hotel
+          </button>
+          <button class="px-4 py-3 text-sm lg:text-md rounded-full hover:bg-slate-200">
+            Appartment
+          </button>
+          <button class="px-4 py-3 text-sm lg:text-md rounded-full hover:bg-slate-200">
+            Home Stay
+          </button>
+        </div>
+        <div class="flex items-center flex-wrap lg:flex-nowrap [&>div>label]:text-sm lg:[&>div>label]:text-md [&>div>input]:text-xs lg:gap-5 justify-between mt-2 md:mt-5">
+          <div class="flex flex-col">
+            <label for="location"  class="font-medium">Location</label>
+            <input
+              type="text"
+              name="city"
+              placeholder="Type the destination"
+              class="bg-transparent rounded-full border py-3 px-4"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="checkin" class="font-medium">Check in</label>
+            <input
+              type="date"
+              name="check_in_time"
+              placeholder="Type the destination"
+              class="bg-transparent rounded-full border py-3 px-4"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="checkout" class="font-medium">Checkout</label>
+            <input
+              type="date"
+              name="check_out_time"
+              placeholder="Type the destination"
+              class="bg-transparent rounded-full border py-3 px-4"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="participant" class="font-medium">Guest</label>
+            <div class="relative" x-cloak x-data="{showModal: false, Num: 1}">
+              <input
+                type="text"
+                name="guests"
+                x-model.number="Num"
+                placeholder="Guest"
+                @click="showModal = !showModal"
+                class="bg-transparent rounded-full border py-3 px-4"
+              />
+              <div
+                x-show="showModal"
+                @click.away="showModal = false"
+                x-transition:enter="transition ease-out duration-300"
+                x-transition:enter-start="opacity-0 scale-90"
+                x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-300"
+                x-transition:leave-start="opacity-100 scale-100"
+                x-transition:leave-end="opacity-0 scale-90"
+                class="w-[300px] absolute shadow-md right-10 md:right-0 top-14 z-20 space-y-3 rounded-xl bg-white p-4"
+              >
+                <div
+                  x-data="{ count:0 }"
+                  class="flex items-center justify-between py-2 border-b"
+                >
+                  <div class="">
+                    <span class="font-semibold">Adult</span>
+                    <p class="text-sm">Ages 13 or above</p>
+                  </div>
+                  <div class="space-x-2">
+                    <button
+                      title="add"
+                      x-on:click="Num--"
+                      type="button"
+                      class="bg-transparent border w-9 h-9 rounded-md"
+                    >
+                      -
+                    </button>
+                    <span x-text="Num">1</span>
+                    <button
+                      title="reduce"
+                      x-on:click="Num++"
+                      x-on:click="Num++"
+                      type="button"
+                      class="bg-transparent border w-9 h-9 rounded-md"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between py-2 border-b">
+                  <div class="">
+                    <span class="font-semibold">Children</span>
+                    <p class="text-sm">Ages 2 - 12</p>
+                  </div>
+                  <div class="space-x-2" x-data="{count: 0}">
+                    <button
+                      title="add"
+                      x-on:click="count--"
+                      type="button"
+                      class="bg-transparent border w-9 h-9 rounded-md"
+                    >
+                      -
+                    </button>
+                    <span x-text="count">1</span>
+                    <button
+                      title="reduce"
+                      x-on:click="count++"
+                      type="button"
+                      class="bg-transparent border w-9 h-9 rounded-md"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <div
+                  x-data="{count: 0}"
+                  class="flex items-center justify-between py-2 border-b"
+                >
+                  <div class="">
+                    <span class="font-semibold">Infants</span>
+                    <p class="text-sm">Under 2</p>
+                  </div>
+                  <div class="space-x-2">
+                    <button
+                      x-on:click="count--"
+                      title="add"
+                      type="button"
+                      class="bg-transparent border w-9 h-9 rounded-md"
+                    >
+                      -
+                    </button>
+                    <span x-text="count">1</span>
+                    <button
+                      x-on:click="count++"
+                      title="reduce"
+                      type="button"
+                      class="bg-transparent border w-9 h-9 rounded-md"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex mt-4 gap-4">
+            <div class="flex w-full">
+
+                <input
+                  type="search"
+                  name="title"
+                  placeholder="Type Property name"
+                  class="bg-transparent rounded-full w-full border py-3 px-4"
+                />
+              </div>
+            <button
+              type="submit"
+              class="bg-green-800 text-white px-5 py-3 rounded-full"
+            >
+              Search
+            </button>
+            </div>
+      </form>
+      

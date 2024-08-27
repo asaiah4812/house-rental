@@ -1,0 +1,105 @@
+{% extends 'layout/main-layout.html' %}
+
+{% load static %}
+
+{% block title %}{% endblock %}
+
+{% block layout %}
+     <section class="flex justify-around w-[90%] gap-3 flex-wrap md:flex-nowrap lg:w-[80%] pt-12 mx-auto">
+      <div class="space-y-5">
+        <div class="w-60 overflow-hidden rounded-full">
+          <img src="{{profile.avatar}}" class="w-full" alt="{{profile.user.username}}" />
+        </div>
+        <div class="space-y-4">
+          <h2 class="font-bold md:text-xl lg:text-2xl">{{profile.user.get_full_name}}</h2>
+          <span class="text-slate-600">@{{profile.user.username}}</span>
+          <div class="flex items-center gap-3">
+            <a
+              class="hover:-translate-y-4 duration-200 ease-in-out transition-all"
+              href="#"
+            >
+              <i class="fa-brands fa-facebook text-lg md:text-2xl"></i>
+            </a>
+            <a
+              class="hover:-translate-y-4 duration-200 ease-in-out transition-all"
+              href="#"
+            >
+              <i class="fa-brands fa-linkedin text-lg md:text-2xl"></i>
+            </a>
+            <a
+              class="hover:-translate-y-4 duration-200 ease-in-out transition-all"
+              href="#"
+            >
+              <i class="fa-brands fa-twitter text-lg md:text-2xl"></i>
+            </a>
+            <a
+              class="hover:-translate-y-4 duration-200 ease-in-out transition-all"
+              href="#"
+            >
+              <i class="fa-brands fa-instagram text-lg md:text-2xl"></i>
+            </a>
+            <a
+              class="hover:-translate-y-4 duration-200 ease-in-out transition-all"
+              href="#"
+            >
+              <i class="fa-brands fa-github text-lg md:text-2xl"></i>
+            </a>
+            <a
+              class="hover:-translate-y-4 duration-200 ease-in-out transition-all"
+              href="#"
+            >
+              <i class="fa-brands fa-dribbble text-lg md:text-2xl"></i>
+            </a>
+            <a
+              class="hover:-translate-y-4 duration-200 ease-in-out transition-all"
+              href="#"
+            >
+              <i class="fa-brands fa-behance text-lg md:text-2xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col items-start gap-4">
+        <h2 class="font-bold text-4xl">Your Profile</h2>
+        <p>
+          The information you share will be used across Altlet to help other
+          guests and Hosts get to know you. Learn more
+        </p>
+        <div class="flex-col gap-5 w-full">
+          <div class="flex gap-4 border-b py-5 w-full hover:bg-slate-50">
+            <div>
+              <i class="fa fa-graduation-cap"></i>
+            </div>
+            <div>Taraba state University</div>
+          </div>
+          <div class="flex gap-4 border-b py-5 w-full hover:bg-slate-50">
+            <div>
+              <i class="fa fa-location-dot"></i>
+            </div>
+            <div>Jalingo Taraba state Nigeria</div>
+          </div>
+          <div class="flex gap-4 border-b py-5 w-full hover:bg-slate-50">
+            <div>
+              <i class="fa-solid fa-cake-candles"></i>
+            </div>
+            <div>31 oct 2001</div>
+          </div>
+          <div class="flex gap-4 border-b py-5 w-full hover:bg-slate-50">
+            <div>
+              <i class="fa-solid fa-language"></i>
+            </div> 
+            <div>English , Hausa, Tigun</div>
+          </div>
+          <div class="p-4 mt-4 rounded-md">
+            <h2 class="font-bold text-2xl pb-3">About You</h2>
+            <p class="max-w-[700px]">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
+              officiis ex ad deserunt inventore asperiores, veniam officia nihil
+              dignissimos quibusdam. Exercitationem iure aperiam dolor enim
+              dignissimos dicta cumque, explicabo modi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

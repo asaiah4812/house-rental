@@ -1,0 +1,31 @@
+{% load static %}
+<div class="col-span-1 p-4">
+          <div class="w-full overflow-hidden rounded-xl relative">
+            <img src="{{primage}}" alt="" />
+            <a {{ attrs }} class="absolute top-5 right-4">
+              {% if request.addfavourite.property %}
+              <i class="fa-solid fa-heart text-white text-2xl"></i>
+              {% else %}
+              <i class="fa-regular fa-heart text-white text-2xl"></i>
+              {% endif %}
+            </a>
+          </div>
+          <h2 class="text-md md:text-lg lg:text-xl font-medium mt-2">
+           {{title}}
+          </h2>
+          <div
+            class="flex justify-between mt-2 [&>span]:text-sm text-slate-600 hover:text-slate-700 cursor-pointer items-center"
+          >
+            <span><i class="fa-regular fa-star"></i> Rating</span>
+            <span><i class="fa fa-location-dot"></i> Jalingo</span>
+            <span><i class="fa fa-calendar"></i> {{date}}</span>
+          </div>
+          <div class="mt-4 flex justify-between items-center">
+            <div>
+              <div class="text-gray-600">
+                <span class="font-bold">&#8358; {{price}}</span>/Night
+              </div>
+            </div>
+            <a href="{% url 'core:property' pro.pk %}" class="px-5 py-3 rounded-full bg-black hover:bg-slate-700 text-white">View Room</a>
+          </div>
+        </div>

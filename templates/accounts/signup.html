@@ -1,0 +1,33 @@
+{% extends 'layout/auth-layout.html' %}
+
+{% block title %}Signup Page{% endblock %}
+
+{% block layout %}
+  <section x-data="{ loading: false }" class="h-screen flex items-center justify-center">
+    <form @submit="loading = true" method="POST" class="flex flex-col w-[400px] p-6 gap-4 bg-slate-100">
+        <h2 class="font-bold text-center lg:text-3xl py-5">
+            Signup Page
+        </h2>
+        {% csrf_token %}
+        <div class="flex flex-col">
+            <input type="email" name="email" placeholder="Enter email" class="rounded-md">
+        </div>
+        <div class="flex flex-col">
+            <input type="text" name="username" placeholder="Enter Username" class="rounded-md">
+        </div>
+        <div class="flex flex-col">
+            <input type="password" name="password1" placeholder="Enter Password" class="rounded-md">
+        </div>
+        <div class="flex flex-col">
+            <input type="password" name="password2" placeholder="Enter Password" class="rounded-md">
+        </div>
+         <span>Already have an account? <a href="{% url 'accounts:login' %}" class="text-blue-600 hover:underline">Check in</a></span>
+        <button x-show="!loading" type="submit" class="py-3 bg-blue-500 rounded-md text-lg text-white hover:bg-blue-400">
+            Signup
+        </button>
+        <button x-show="loading" type="submit" class="py-3 bg-blue-500 rounded-md text-lg text-white hover:bg-blue-400">
+            Loading...
+        </button>
+    </form>
+</section>
+{% endblock %}
