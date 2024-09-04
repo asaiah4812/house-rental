@@ -2,9 +2,9 @@
   "version": 2,
   "builds": [
     {
-      "src": "altlets/wsgi.py",
+      "src": "asaiah_portfolio/wsgi.py",
       "use": "@vercel/python",
-      "config": { "maxLambdaSize": "15mb", "runtime": "python3.11.4" }
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.12.5" }
     },
     {
       "src": "build_files.sh",
@@ -21,10 +21,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "altlets/wsgi.py"
+      "dest": "asaiah_portfolio/wsgi.py"
     }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "altlets.settings"
-  }
+  ]
 }
